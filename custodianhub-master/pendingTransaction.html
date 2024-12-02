@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="pendingTransaction.css">
+
+	<title>AdminHub</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<img src="img/2020-nia-logo.png" alt="Logo" class="brand-image">
+			<span class="text">National Irrigation Administration</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="index.html">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="completedTransaction.html">
+					<i class='bx bx-list-check'></i>
+					<span class="text">Completed Transactions</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="pendingTransaction.html">
+					<i class='bx bxs-detail'></i>
+					<span class="text">Pending Transactions</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#" id="light-dark-mode-toggle">
+					<i class='bx bxs-sun'></i>
+					<span class="text">Light/Dark Mode</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">PETTY CASH SYSTEM</a>
+			<!-- <form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form> -->
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<!-- <a href="#" class="profile">
+				<img src="img/people.png">
+			</a> -->
+			<a href="#" class="admin-link"> 
+				<i class='bx bxs-user-circle'></i>
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Pending Transaction</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Pending Transaction</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Transactions</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="welcome">
+					<span class="text">Welcome Custodian</span>
+				</a>
+			</div>
+
+
+			<div class="table-data">
+                <div class="record">
+                    <div class="head">
+                        <h3>Transactio Records</h3>
+                        <div id="searchContainer">
+                            <input type="text" id="searchInput" placeholder="Search Transactions..." onkeyup="filterTable()">
+                        </div>
+                        <i class='bx bx-search' onclick="toggleSearch()"></i>
+						<div class="addTransaction">
+							<!-- Replace the 'bxs-user-plus' with 'bxs-cart-add' for the add transaction icon -->
+							<i class='bx bx-plus' onclick="openAddTransactionForm()" title="Add Transaction"></i>
+						</div>
+						<!-- <div class="filter-container">
+							<i class='bx bx-filter' onclick="toggleFilterMenu()"></i>
+							<div id="filterMenu" class="filter-menu hidden">
+								<label>
+									<input type="radio" name="statusFilter" value="all" checked onclick="filterByStatus()"> All
+								</label>
+								<label>
+									<input type="radio" name="statusFilter" value="completed" onclick="filterByStatus()"> Completed
+								</label>
+								<label>
+									<input type="radio" name="statusFilter" value="pending" onclick="filterByStatus()"> Pending
+								</label>
+							</div>
+						</div> -->
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Date</th>
+                                <th>OR No.</th>
+                                <th>Description</th>
+                                <th>Total</th>
+                                <th>Purchaser</th>
+                                <th>Employee ID</th>
+                                <th>Store Name</th>
+                                <th>Custodian</th>
+                                <th>Refund</th>
+								<th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>TRX001</td>
+                                <td>2024-11-28</td>
+                                <td>OR1234</td>
+                                <td>Office Supplies</td>
+                                <td>₱2,500</td>
+                                <td>John Doe</td>
+                                <td>EMP001</td>
+                                <td>ABC Store</td>
+                                <td>Jane Smith</td>
+                                <td>₱0</td>
+								<td><i class="bx bx-chevron-right" title="Continue" onclick="openContinueTransactionForm()"></i></td>
+                            </tr>
+                            <tr>
+                                <td>TRX002</td>
+                                <td>2024-11-27</td>
+                                <td>OR5678</td>
+                                <td>Maintenance</td>
+                                <td>₱1,800</td>
+                                <td>Mary Ann</td>
+                                <td>EMP002</td>
+                                <td>XYZ Mart</td>
+                                <td>Mark Lee</td>
+                                <td>₱200</td>
+								<td><i class="bx bx-chevron-right" title="Continue" onclick="openContinueTransactionForm()"></i></td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+			<div id="addTransactionModal" class="modal hidden">
+			<div class="modal-content">
+				<form id="transactionForm">
+					<!-- Left and Right Sections -->
+					<div class="form-sections">
+						<div class="left-section">
+							<div class="form-group">
+								<label for="transactionId">Transaction ID:</label>
+								<input type="text" id="transactionId">
+							</div>
+							<div class="form-group">
+								<label for="transactionDate">Date:</label>
+								<input type="date" id="transactionDate">
+							</div>
+							<div class="form-group">
+								<label for="amountGiven">Amount Given:</label>
+								<input type="number" id="amountGiven">
+							</div>
+							<div class="form-group">
+								<label for="orNumber">OR No:</label>
+								<input type="text" id="orNumber">
+							</div>
+							<div class="form-group">
+								<label for="description">Description:</label>
+								<input type="text" id="description">
+							</div>
+							<div class="form-group">
+								<label for="total">Total:</label>
+								<input type="number" id="total" readonly>
+							</div>
+							<div class="form-group">
+								<label for="purchaser">Purchaser:</label>
+								<input type="text" id="purchaser">
+							</div>
+							<div class="form-group">
+								<label for="employeeId">Employee ID:</label>
+								<input type="text" id="employeeId">
+							</div>
+							<div class="form-group">
+								<label for="personalContributions">Personal Contributions:</label>
+								<input type="number" id="personalContributions">
+							</div>
+							<div class="form-group">
+								<label for="storeName">Store Name:</label>
+								<input type="text" id="storeName">
+							</div>
+						</div>
+			
+						<div class="right-section">
+							<table>
+								<thead>
+									<tr>
+										<th>Items</th>
+										<th>Amount</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="empty-row">
+										<td class="item-empty-cell"></td>
+										<td class="amount-empty-cell"></td>
+									</tr>
+									<tr class="total-row">
+										<td>Total:</td>
+										<td id="totalAmount">0.00</td>
+									</tr>
+								</tbody>
+							</table>
+			
+							<div class="add-item-section">
+								<input type="text" placeholder="Item Name" id="itemNameInput">
+								<input type="text" placeholder="P0.00" id="itemPriceInput">
+								<button id="addItemButton">Add Item</button>
+							</div>
+						</div>
+					</div>
+			
+					<!-- Centered Buttons -->
+					<div class="button-group">
+						<button type="submit" class="submit-btn">Add</button>
+						<button type="button" class="cancel-btn" id="cancelTransactionBtn">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+			
+				
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="viewTransaction.js"></script>
+</body>
+</html>
